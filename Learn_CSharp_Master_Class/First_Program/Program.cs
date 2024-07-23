@@ -1,3 +1,15 @@
-﻿// See https://aka.ms/new-console-template for more information
+﻿
 
-Console.WriteLine("Hello, World!");
+
+namespace FirstProgramToDoList
+{
+    public class Program
+    {
+        public static void Main()
+        {
+            ToDoList toDoList = new ToDoList("Gilang");
+            toDoList.RunToDoList();
+        }
+    }
+
+}
