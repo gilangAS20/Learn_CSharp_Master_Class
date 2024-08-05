@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "First_Program", "First_Program\First_Program.csproj", "{A82A76E3-7E1D-4425-A916-863A5D92E99A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDo_List", "ToDo_List\ToDo_List.csproj", "{A82A76E3-7E1D-4425-A916-863A5D92E99A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
