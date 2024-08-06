@@ -5,24 +5,24 @@ namespace Simple_Calculator;
 public class Operator : IOperator
 {
     #region Operator
-    public double Add(int firstNum, int secondNum)
+    public double Add(double firstNum, double secondNum)
     {
-        throw new NotImplementedException();
+        return firstNum + secondNum;
     }
 
-    public double Substract(int firstNum, int secondNum)
+    public double Substract(double firstNum, double secondNum)
     {
-        throw new NotImplementedException();
+        return firstNum - secondNum;
     }
 
-    public double Multiply(int firstNum, int secondNum)
+    public double Multiply(double firstNum, double secondNum)
     {
-        throw new NotImplementedException();
+        return firstNum * secondNum;
     }
 
-    public double Divide(int firstNum, int secondNum)
+    public double Divide(double firstNum, double secondNum)
     {
-        throw new NotImplementedException();
+        return firstNum / secondNum;
     }
     #endregion
 }

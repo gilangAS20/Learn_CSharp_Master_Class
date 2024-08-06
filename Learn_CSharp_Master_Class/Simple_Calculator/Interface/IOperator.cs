@@ -2,11 +2,11 @@
 
 public interface IOperator
 {
-    double Add(int firstNum, int secondNum);
+    double Add(double firstNum, double secondNum);
 
-    double Substract(int firstNum, int secondNum);
+    double Substract(double firstNum, double secondNum);
 
-    double Multiply(int firstNum, int secondNum);
+    double Multiply(double firstNum, double secondNum);
 
-    double Divide(int firstNum, int secondNum);
+    double Divide(double firstNum, double secondNum);
 }

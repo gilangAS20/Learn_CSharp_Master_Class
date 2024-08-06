@@ -6,10 +6,8 @@ namespace Simple_Calculator
     {
         static void Main()
         {
-            Console.WriteLine("Hello, World!");
-
-            Menu menu = new Menu();
-            menu.Show();
+            Calculator calculator = new Calculator();
+            calculator.Run();
         }
     }
 }
