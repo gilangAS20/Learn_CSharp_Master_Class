@@ -6,5 +6,6 @@ public enum EOperator
     Substract,
     Multiply,
     Divide,
+    Exit,
     None
 }

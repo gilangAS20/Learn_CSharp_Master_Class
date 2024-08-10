@@ -10,6 +10,8 @@ public class Calculator
     private readonly string _inputSecondNumber = "input the second number: ";
     private readonly string _chooseOperator;
     private Operator _operator;
+
+    private bool _isExit;
     
     public Calculator()
     {
@@ -19,6 +21,7 @@ public class Calculator
         menu.AppendLine("[S]ubtract");
         menu.AppendLine("[M]ultiply");
         menu.AppendLine("[D]ivide");
+        menu.AppendLine("[E]xit");
         _chooseOperator = menu.ToString();
 
         _operator = new Operator();
@@ -26,30 +29,73 @@ public class Calculator
 
     public void Run()
     {
-        Console.WriteLine(_greetings);
+        EOperator inputToEnum = EOperator.None;
+        do
+        {
+            Console.Clear();
+            
+            Console.WriteLine(_greetings);
         
-        Console.WriteLine("Input first number:");
-        double firstInput = double.Parse(Console.ReadLine());
+            // input first number
+            Console.WriteLine("Input first number:");
+            double firstInput = double.Parse(Console.ReadLine());
 
-        Console.WriteLine("Input second number:");
-        double secondInput = double.Parse(Console.ReadLine());
+            // input second number
+            Console.WriteLine("Input second number:");
+            double secondInput = double.Parse(Console.ReadLine());
         
-        Console.WriteLine(_chooseOperator);
-        char inputOperator = Char.Parse(Console.ReadLine());
+            // choose operator want to use
+            Console.WriteLine(_chooseOperator);
+            char inputOperator = Char.Parse(Console.ReadLine());
 
-        EOperator inputToEnum = Operator(inputOperator);
+            // return operator to enum
+            inputToEnum = Operator(inputOperator);
+
+            if (inputToEnum == EOperator.Exit)
+            {
+                DoExit(true);
+            }
+            else
+            {
+                var result = PrintResult(firstInput, secondInput, inputToEnum);
+                if (result != "Exit")
+                {
+                    Console.WriteLine(result);
+                    DoExit();
+                }
+                else
+                {
+                    DoExit(true);
+                }
+            }
+            
+
+        } while (_isExit == false);
         
-        Console.WriteLine(PrintResult(firstInput, secondInput, inputToEnum));
-
-        Console.ReadKey();
-
-// ToDo: add looping to make user able to user calculator again after show the last result
 // ToDo: add error checking when user input non number when input first and second number
-// ToDo: add error checking when user input operator except in the menu
-// ToDo: add method to quit the calculator if user choose [E]xit
 // ToDo: add unit test to test operator function, wrong input, etc.
     }
 
+    public void DoExit(bool isForceExit = false)
+    {
+        if (isForceExit)
+        {
+            Console.WriteLine("Program closed, thank you!");
+            _isExit = true;
+            System.Environment.Exit(1);
+        }
+        
+        Console.WriteLine("Do you want to exit ? (Y/N)");
+        char isExit = char.Parse(Console.ReadLine());
+
+        if (isExit == 'Y' || isExit == 'y')
+        {
+            Console.WriteLine("Program closed, thank you!");
+            _isExit = true;
+            System.Environment.Exit(1);
+        }
+    }
+    
     public string PrintResult(double firstNum, double secondNum, EOperator choosenOperator)
     {
         double? operatorResult = GetResult( firstNum, secondNum, choosenOperator );
@@ -64,6 +110,8 @@ public class Calculator
                 return $"Hasil dari {firstNum} * {secondNum} adalah: {operatorResult}";
             case EOperator.Divide:
                 return $"Hasil dari {firstNum} : {secondNum} adalah: {operatorResult}";
+            case EOperator.Exit:
+                return "Exit";
             default:
                 return "result invalid";
         }
@@ -80,6 +128,8 @@ public class Calculator
                 return _operator.Multiply(firstNum, secondNum);
             case EOperator.Substract:
                 return _operator.Substract(firstNum, secondNum);
+            case EOperator.Exit:
+                return null;
         }
         
         return null;
@@ -105,6 +155,9 @@ public class Calculator
             case 'd':
                 return EOperator.Divide;
             
+            case 'E':
+            case 'e':
+                return EOperator.Exit;
             default:
                 return EOperator.None;
         }
