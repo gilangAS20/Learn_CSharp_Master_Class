@@ -34,15 +34,12 @@ public class Calculator
         {
             Console.Clear();
             
+            // show hello
             Console.WriteLine(_greetings);
         
-            // input first number
-            Console.WriteLine("Input first number:");
-            double firstInput = double.Parse(Console.ReadLine());
+            // take user input
+            TakeInputFromUser(out double firstInput, out double secondInput);
 
-            // input second number
-            Console.WriteLine("Input second number:");
-            double secondInput = double.Parse(Console.ReadLine());
         
             // choose operator want to use
             Console.WriteLine(_chooseOperator);
@@ -51,6 +48,7 @@ public class Calculator
             // return operator to enum
             inputToEnum = Operator(inputOperator);
 
+            // exit if user choose Exit menu
             if (inputToEnum == EOperator.Exit)
             {
                 DoExit(true);
@@ -76,6 +74,31 @@ public class Calculator
 // ToDo: add unit test to test operator function, wrong input, etc.
     }
 
+    private void TakeInputFromUser(out double firstInput, out double secondInput)
+    {
+        // input first number
+        Console.WriteLine("Input first number:");
+        string firstInputString = Console.ReadLine();
+        bool isFirstInputBool = double.TryParse(firstInputString, out firstInput);
+        if (!isFirstInputBool)
+        {
+            Console.WriteLine("Input invalid, please input number \npress any key to continue");
+            Console.ReadKey();
+            Run();
+        }
+
+        // input second number
+        Console.WriteLine("Input second number:");
+        string secondInputString = Console.ReadLine();
+        bool isSecondInputBool = double.TryParse(secondInputString, out secondInput);
+        if (!isSecondInputBool)
+        {
+            Console.WriteLine("Input invalid, please input number \npress any key to continue");
+            Console.ReadKey();
+            Run();
+        }
+    }
+    
     public void DoExit(bool isForceExit = false)
     {
         if (isForceExit)
