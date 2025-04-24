@@ -151,6 +151,7 @@ public class ToDoList
     private void RemoveTodo()
     {
         Console.WriteLine("Remove Todo");
+        SeeAllTodo();
 
         string _userInput = Console.ReadLine();
         
