@@ -13,5 +13,8 @@ class Program
         // rectangle with default value more than negative number
         Rectangle rectangleNegative = new Rectangle(-10, -21);
         Rectangle rectangleZero = new Rectangle(0, 0);
+
+        Cube cubeOne = new Cube();
+        Console.WriteLine(cubeOne.Width);
     }
 }
