@@ -4,6 +4,7 @@ public class Rectangle
 {
     private readonly int _width;
     private readonly int _height;
+    public static int FirstUsed() => DateTime.Now.Millisecond;
     
     public Rectangle( int width, int height )
     {

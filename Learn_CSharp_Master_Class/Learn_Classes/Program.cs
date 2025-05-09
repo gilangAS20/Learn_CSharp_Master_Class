@@ -16,5 +16,12 @@ class Program
 
         Cube cubeOne = new Cube();
         Console.WriteLine(cubeOne.Width);
+
+        Rectangle rectangle1 = new Rectangle(-10, -21);
+        Console.WriteLine(Rectangle.FirstUsed());
+        Console.WriteLine(Rectangle.FirstUsed());
+        Console.WriteLine(Rectangle.FirstUsed());
+        Console.WriteLine(Rectangle.FirstUsed());
+        
     }
 }
